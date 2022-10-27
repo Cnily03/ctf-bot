@@ -1,6 +1,6 @@
 # CTF Helper
 
-A Discord Bot for CTF Crafting based on [Pycord](https://pycord.dev/github).
+A discord bot for CTF crafting based on [Pycord](https://pycord.dev/github).
 
 ## Application
 
@@ -22,7 +22,7 @@ or if you use Poetry to manage your project, install as following.
 poetry install
 ```
 
-Make file `token` at root directory, which contains your Discord Bot Token.
+Make file `token` at root directory, which contains Token of your discord bot .
 
 Then start the program.
 
@@ -36,24 +36,13 @@ Edit `config.yml` at the root directory.
 
 ## Development
 
-### Class `AppPlugin`
+### Extensions
 
-`AppPlugin` is a abstract class for developers to create various plugins with colorful functions.
-
-The implementation of API to connect with `bot` is method `apphandler` with a param `bot` in type `discord.Bot`.
-
-#### Prototype of `AppPlugin`
-
-```python
-class AppPlugin:
-    def apphandler(self, bot: discord.Bot): pass
-```
-
-### Class `BotController`
+#### Class `BotController`
 
 `BotController` is a packed abstract class of `discord.Bot`, which can help control the bot more easily.
 
-#### Prototype of `BotController`
+##### Prototype of `BotController`
 
 ```python
 class BotController:
@@ -63,7 +52,20 @@ class BotController:
         plugin.apphandler(self.bot)
 ```
 
-### Example
+#### Class `AppPlugin`
+
+`AppPlugin` is a abstract class for developers to create various plugins with colorful functions.
+
+The implementation of API to connect with `bot` is method `apphandler` with a param `bot` in type `discord.Bot`.
+
+##### Prototype of `AppPlugin`
+
+```python
+class AppPlugin:
+    def apphandler(self, bot: discord.Bot): pass
+```
+
+#### Example
 
 ```python
 class CustomPlugin(AppPlugin):
@@ -75,12 +77,10 @@ app = BotController(bot)
 app.use(CustomPlugin())
 ```
 
-Many functions in this project is implemented by this way.
-
-## Usage
+Many functions in this project is implemented in this way.
 
 ### Register commands
 
-All the commands python file is in `commands`.
+All the commands python file is in `commands` directory.
 
 Remember to modify `register_args` in `__main__.py` after adding  or removing a command.
