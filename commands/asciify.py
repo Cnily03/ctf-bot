@@ -1,4 +1,3 @@
-import imp
 import discord
 from discord import option
 
@@ -22,25 +21,37 @@ class asciify(CmdProcessor):
         async def asciify(ctx, mode, string):
             res = ""
             if mode == "all":
-                for i in string:
-                    res += '\\x' + '{:02X}'.format(ord(i)).upper()
+                for char in string:
+                    res += '\\x' + '{:02X}'.format(ord(char)).upper()
             elif mode == "quote":
                 on_quote = False
                 quote_char = ""
-                for i in string:
+                jump = False
+                for i in range(len(string)):
+                    if jump:
+                        jump = False
+                        continue
+                    char = string[i]
                     on_set = False
-                    if on_quote and i == quote_char:
+                    if on_quote and char == quote_char:  # end
                         on_quote = False
-                    elif (not on_quote) and (i == "'" or i == '"'):
+                    elif (not on_quote) and (char == "'" or char == '"'):  # start
                         on_quote = True
                         on_set = True
-                        quote_char = i
-                    if (not on_set) and on_quote:
-                        res += '\\x' + '{:02X}'.format(ord(i)).upper()
+                        quote_char = char
+                    if (not on_set) and on_quote:  # modify
+                        if char == "\\" and (string[i+1] == "'" or string[i+1] == '"'):  # \" \'
+                            res += '\\x' + '{:02X}'.format(ord(string[i+1])).upper()
+                            jump = True
+                        elif char == "\\":
+                            res += '\\x' + '{:02X}'.format(ord(eval("'\\"+string[i+1]+"'"))).upper()
+                            jump = True
+                        else:  # normal
+                            res += '\\x' + '{:02X}'.format(ord(char)).upper()
                     else:
-                        res += i
+                        res += char
 
             await ctx.respond("\n".join([
-                f"**Following shows the asciified string of **`{string}`"
+                f"**Following shows the asciified string of **`{string}`",
                 f"```\n{res}\n```"])
             )
