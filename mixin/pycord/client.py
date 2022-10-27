@@ -7,9 +7,8 @@ _close = Client.close
 
 
 async def login(self, token: str) -> None:
-    logger.debug("[green]Bot is logging to the server", extra=Extra.PURE_MARK)
+    logger.info("Logging to the server", extra=Extra.PURE_MARK)
     await _login(self, token)
-    logger.info("Bot successfully logged in")
 
 
 async def connect(self, *, reconnect: bool = True) -> None:
