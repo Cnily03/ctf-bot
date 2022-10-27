@@ -1,7 +1,7 @@
 import discord
+from discord.commands import ApplicationContext
 from discord import option
-from logger import logger
-from commands.core.CmdHelper import CmdHelper
+from commands.core.CmdHelper import CmdHelper, log_command
 
 
 class asciify(CmdHelper):
@@ -18,7 +18,8 @@ class asciify(CmdHelper):
             choices=["all", "quote"]
         )
         @option("string", str, description="string to be asciified")
-        async def asciify(ctx, mode, string):
+        @log_command
+        async def asciify(ctx: ApplicationContext, mode, string):
             res = ""
             if mode == "all":
                 for char in string:
