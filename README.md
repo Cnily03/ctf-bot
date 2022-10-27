@@ -16,6 +16,12 @@ Install requirements.
 pip install -r requirements.txt
 ```
 
+or if you use Poetry to manage your project, install as following.
+
+```bash
+poetry install
+```
+
 Make file `token` at root directory, which contains your Discord Bot Token.
 
 Then start the program.

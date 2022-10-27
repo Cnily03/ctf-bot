@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ctf-bot"
+version = "0.1.0"
+description = "A Discord Bot for CTF Crafting based on Pycord."
+authors = ["Jevon Wang <cnily03@outlook.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "ctf_bot"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+py-cord = "^2.2.2"
+pyyaml = "^6.0"
+rich = "^12.6.0"
+colorama = "^0.4.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
