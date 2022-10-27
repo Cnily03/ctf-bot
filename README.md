@@ -16,13 +16,17 @@ Install requirements.
 pip install -r requirements.txt
 ```
 
-Make file `token` at root dir, which contains your Discord Bot Token.
+Make file `token` at root directory, which contains your Discord Bot Token.
 
 Then start the program.
 
 ```bash
 python .
 ```
+
+## Configure
+
+Edit `config.yml` at the root directory.
 
 ## Development
 

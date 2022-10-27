@@ -1,3 +1,4 @@
+# Use proxy to connect discord server
 Proxy:
   enable: true
   proxy: http://127.0.0.1:7890
