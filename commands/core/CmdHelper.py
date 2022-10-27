@@ -3,18 +3,18 @@ import discord
 from app import AppPlugin
 
 
-class CmdProcessor(AppPlugin):
+class CmdHelper(AppPlugin):
     def register(self, bot: discord.Bot): pass
 
 
-class CmdProcessor(AppPlugin):
-    def __init__(self, args: list[CmdProcessor] = []) -> None:
+class CmdHelper(AppPlugin):
+    def __init__(self, args: list[CmdHelper] = []) -> None:
         self.cmd_args = args
 
-    def use(self, processor: CmdProcessor):
+    def use(self, processor: CmdHelper):
         processor.register(bot=self.bot)
 
-    def useArgs(self, args: list[CmdProcessor]):
+    def useArgs(self, args: list[CmdHelper]):
         for cmd in args:
             self.use(cmd)
 

@@ -4,7 +4,7 @@ from app import BotController
 from logger import logger
 import yaml
 import discord
-from commands.core.CmdProcessor import CmdProcessor
+from commands.core.CmdHelper import CmdHelper
 from commands.asciify import asciify
 # import interactions
 
@@ -34,7 +34,7 @@ app = BotController(bot)
 register_args = [
     asciify
 ]
-app.use(CmdProcessor(register_args))
+app.use(CmdHelper(register_args))
 
 
 # login

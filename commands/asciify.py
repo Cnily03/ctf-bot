@@ -1,10 +1,10 @@
 import discord
 from discord import option
+from logger import logger
+from commands.core.CmdHelper import CmdHelper
 
-from commands.core.CmdProcessor import CmdProcessor
 
-
-class asciify(CmdProcessor):
+class asciify(CmdHelper):
 
     def register(bot: discord.Bot):
 
