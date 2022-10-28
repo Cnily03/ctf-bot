@@ -4,7 +4,9 @@ A discord bot for CTF crafting based on [Pycord](https://pycord.dev/github).
 
 ## Application
 
-Clone this repository to your computer.
+Invite CTF Helper to your server: https://discord.cnily.me/invite/bot/ctf-bot
+
+If you want to create your own bot, clone this repository to your computer.
 
 ```bash
 git clone https://github.com/Cnily03/ctf-bot.git

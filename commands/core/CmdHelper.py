@@ -46,3 +46,39 @@ class CmdHelper(AppPlugin):
     def apphandler(self, bot: discord.Bot):
         self.bot = bot
         self.useArgs(self.cmd_args)
+
+
+class ResTemplate:
+    class Area:
+        BLOCK_CHAIN = "Block Chain"
+        PWN = "Pwn"
+        CRYPTO = "Crypto"
+        MISC = "Misc"
+        REVERSE = "Reverse"
+        WEB = "Web"
+        PENTEST = "Web Pentest"
+
+    @staticmethod
+    def template(method=None, description=None, area=None, annodation=None, input=None, result=None) -> str:
+        res_components = []
+        if type(method) == str:
+            res_components.append("**Method**: "+method)
+        if type(description) == str:
+            res_components.append("**Description**: "+description)
+        if type(area) == str:
+            res_components.append("**Area**: "+area)
+        if type(annodation) == str:
+            res_components.append(annodation)
+        io = []
+        if type(input) == str:
+            io.append(f"Input: ```\n{input}\n```")
+        if type(result) == str:
+            io.append(f"Result: ```\n{result}\n```")
+        if len(io) > 0:
+            res_components.append("".join(io))
+        res = "\n".join(res_components)
+        return res
+
+
+Area = ResTemplate.Area
+template = ResTemplate.template

@@ -1,7 +1,8 @@
+import re
 import discord
 from discord.commands import ApplicationContext
 from discord import option
-from commands.core.CmdHelper import CmdHelper, log_command
+from commands.core.CmdHelper import CmdHelper, log_command, Area, template
 
 
 class asciify(CmdHelper):
@@ -52,7 +53,29 @@ class asciify(CmdHelper):
                     else:
                         res += char
 
-            await ctx.respond("\n".join([
-                f"**Following shows the asciified string of **`{string}`",
-                f"```\n{res}\n```"])
-            )
+            await ctx.respond(template(
+                method="Asciify Encode",
+                area=Area.CRYPTO,
+                input=string,
+                result=res
+            ))
+
+        @bot.slash_command(
+            name="unasciify",
+            description="unasciify string"
+        )
+        @option("string", str, description="string to be unasciified")
+        @log_command
+        async def unasciify(ctx: ApplicationContext, string):
+            res = ""
+            str_list = re.split(r"(\\x[0-9a-fA-F]{2})", string)
+            for i in range(len(str_list)):
+                if re.search(r"(\\x[0-9a-fA-F]{2})", str_list[i]):
+                    str_list[i] = eval("'"+str_list[i]+"'")
+            res = "".join(str_list)
+            await ctx.respond(template(
+                method="Asciify Decode",
+                area=Area.CRYPTO,
+                input=string,
+                result=res
+            ))

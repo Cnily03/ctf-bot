@@ -6,8 +6,7 @@ from logger import logger, Extra
 import yaml
 import mixin.pycord.client
 import discord
-from commands.core.CmdHelper import CmdHelper
-from commands.asciify import asciify
+from command import cmd_register
 # import interactions
 
 # Token
@@ -36,10 +35,7 @@ else:
 app = BotController(bot)
 
 # Set commands
-register_args = [
-    asciify
-]
-app.use(CmdHelper(register_args))
+app.use(cmd_register)
 
 
 # login
