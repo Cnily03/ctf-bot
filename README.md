@@ -29,7 +29,7 @@ Make file `token` at root directory, which contains Token of your discord bot .
 Then start the program.
 
 ```bash
-python .
+python ctf-bot
 ```
 
 ## Configure
